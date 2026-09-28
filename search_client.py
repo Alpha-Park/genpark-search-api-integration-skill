@@ -4,31 +4,31 @@ import urllib.parse
 import requests
 from typing import List, Dict, Any, Optional
 
-class GenSparkSearchError(Exception):
+class GenParkSearchError(Exception):
     """Custom exception raised when search client operations fail."""
     pass
 
-class GenSparkSearchClient:
+class GenParkSearchClient:
     """
-    Production-grade client for interfacing with GenSpark Autopilot Search API.
+    Production-grade client for interfacing with GenPark Autopilot Search API.
     Handles dynamic payload construction, ranking logic, response sanitization,
     and automatic exponential backoff retries for robust server operation.
     """
-    def __init__(self, api_key: Optional[str] = None, base_url: str = "https://api.genspark.ai/v1"):
-        self.api_key = api_key or os.environ.get("GENSPARK_API_KEY")
+    def __init__(self, api_key: Optional[str] = None, base_url: str = "https://api.genpark.ai/v1"):
+        self.api_key = api_key or os.environ.get("GENPARK_API_KEY")
         self.base_url = base_url.rstrip("/")
         # Enable mock responses automatically if key is absent
         self.mock_mode = self.api_key is None or self.api_key == "mock"
         
         if self.mock_mode:
-            print("[GenSparkSearchClient] API key not found. Running in local simulation mode.")
+            print("[GenParkSearchClient] API key not found. Running in local simulation mode.")
 
     def search(self, query: str, max_results: int = 5, filter_domain: Optional[str] = None) -> Dict[str, Any]:
         """
-        Queries the GenSpark indexing service, resolves results, and generates structural citations.
+        Queries the GenPark indexing service, resolves results, and generates structural citations.
         """
         if not query.strip():
-            raise GenSparkSearchError("Search query cannot be empty.")
+            raise GenParkSearchError("Search query cannot be empty.")
 
         # If mock mode, construct realistic structured data locally
         if self.mock_mode:
@@ -37,7 +37,7 @@ class GenSparkSearchClient:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
-            "User-Agent": "GenSpark-Agentic-SDK/1.0"
+            "User-Agent": "GenPark-Agentic-SDK/1.0"
         }
         
         payload = {
@@ -61,10 +61,10 @@ class GenSparkSearchClient:
             except Exception as e:
                 last_err = e
                 wait_time = 2 ** attempt
-                print(f"[GenSparkSearchClient] Warning: attempt {attempt+1} failed ({e}). Retrying in {wait_time}s...")
+                print(f"[GenParkSearchClient] Warning: attempt {attempt+1} failed ({e}). Retrying in {wait_time}s...")
                 time.sleep(wait_time)
                 
-        raise GenSparkSearchError(f"GenSpark API search failed after 3 attempts: {last_err}")
+        raise GenParkSearchError(f"GenPark API search failed after 3 attempts: {last_err}")
 
     def _parse_response(self, raw_data: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -91,7 +91,7 @@ class GenSparkSearchClient:
 
     def _simulate_search(self, query: str, max_results: int, filter_domain: Optional[str]) -> Dict[str, Any]:
         """
-        Generates production-grade simulation data representing GenSpark search indexing.
+        Generates production-grade simulation data representing GenPark search indexing.
         """
         domain_str = filter_domain if filter_domain else "example.com"
         simulated_results = [
