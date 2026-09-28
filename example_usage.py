@@ -1,16 +1,16 @@
 import sys
 import json
-from search_client import GenSparkSearchClient
+from search_client import GenParkSearchClient
 
 def main():
     # Fix console encoding on Windows to prevent UnicodeErrors
     if hasattr(sys.stdout, 'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
         
-    print("=== GenSpark Search Integration Agent Verification ===")
+    print("=== GenPark Search Integration Agent Verification ===")
     
     # Initialize client in mock/simulation mode
-    client = GenSparkSearchClient()
+    client = GenParkSearchClient()
     
     # Test Query A: Broad topic query
     query_a = "Zenith Smart Speaker reviews and specifications"
