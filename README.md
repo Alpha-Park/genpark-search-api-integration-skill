@@ -1,6 +1,6 @@
-# GenSpark Search Integration Skill
+# GenPark Search Integration Skill
 
-This repository contains the **GenSpark Search Integration Skill** — an agent customization skill config (`skill.json`), a production-ready Python SDK client (`search_client.py`), and executable verification tests. It is designed to interface with the GenSpark Search API to gather ranked search indexing content, extract citations, filter targets by domain names, and execute API connections using exponent backoffs.
+This repository contains the **GenPark Search Integration Skill** — an agent customization skill config (`skill.json`), a production-ready Python SDK client (`search_client.py`), and executable verification tests. It is designed to interface with the GenPark Search API to gather ranked search indexing content, extract citations, filter targets by domain names, and execute API connections using exponent backoffs.
 
 ---
 
@@ -23,11 +23,11 @@ This repository contains the **GenSpark Search Integration Skill** — an agent 
    Set your API environment variables if executing requests against the live production server (otherwise, client executes in mock mode):
    * **PowerShell**:
      ```powershell
-     $env:GENSPARK_API_KEY="your_api_key"
+     $env:GENPARK_API_KEY="your_api_key"
      ```
    * **bash**:
      ```bash
-     export GENSPARK_API_KEY="your_api_key"
+     export GENPARK_API_KEY="your_api_key"
      ```
 
 ---
@@ -35,10 +35,10 @@ This repository contains the **GenSpark Search Integration Skill** — an agent 
 ## 💻 SDK Usage Reference
 
 ```python
-from search_client import GenSparkSearchClient
+from search_client import GenParkSearchClient
 
 # Initialize Client (mock mode by default)
-client = GenSparkSearchClient()
+client = GenParkSearchClient()
 
 # Search
 results = client.search(
