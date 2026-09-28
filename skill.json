@@ -1,12 +1,12 @@
 {
-  "name": "genspark-search-integration-skill",
-  "description": "GenSpark search integration skill. Wraps GenSpark Autopilot API calls with query normalization, result ranking, citation collection, and exponential backoff retry mechanisms.",
+  "name": "genpark-search-integration-skill",
+  "description": "GenPark search integration skill. Wraps GenPark Autopilot API calls with query normalization, result ranking, citation collection, and exponential backoff retry mechanisms.",
   "version": "1.0.0",
   "author": "alphaparkinc",
   "inputs": {
     "query": {
       "type": "string",
-      "description": "Natural language query to search via GenSpark."
+      "description": "Natural language query to search via GenPark."
     },
     "max_results": {
       "type": "integer",
@@ -34,5 +34,5 @@
       "description": "Aggregated citation mapping."
     }
   },
-  "prompt": "You are a GenSpark search integration coordinator. Normalize the incoming query, make search requests via API, rank the resulting web documents, and generate detailed reference citations."
+  "prompt": "You are a GenPark search integration coordinator. Normalize the incoming query, make search requests via API, rank the resulting web documents, and generate detailed reference citations."
 }
